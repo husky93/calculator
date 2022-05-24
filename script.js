@@ -8,18 +8,35 @@ let firstNumber = 0;
 let operator = '';
 
 numButtons.forEach(button => button.addEventListener('click', e => changeDisplay(e.target.innerHTML)));
-operatorButtons.forEach(button => button.addEventListener('click', operatorClickHandler));
+operatorButtons.forEach(button => button.addEventListener('click', opClickHandler));
+equalsButton.addEventListener('click', equalsClickHandler);
 
-function operatorClickHandler(event) {
+function opClickHandler(event) {
     operator = event.target.innerHTML;
     firstNumber = parseInt(displayValue);
     changeDisplay(null);
 }
 
+function equalsClickHandler() {
+    const secondNumber = parseInt(displayValue);
+    const result = operate(operator, firstNumber, secondNumber);
+    changeDisplay(null);
+    changeDisplay(result);
+}
+
 function changeDisplay(value) {
-    if(display.textContent === '0') display.textContent = value;
-    else if(value === null) display.textContent = '0';
-    else display.textContent += value;
+    if(value === null) {
+        display.textContent = '0';
+        displayValue = '0';
+    }
+    else if(display.textContent === '0') {
+        display.textContent = value;
+        displayValue = value;
+    }
+    else {
+        display.textContent += value;
+        displayValue += value;
+    }
 }
 
 function add(a, b) {
