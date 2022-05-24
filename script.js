@@ -1,14 +1,25 @@
 const display = document.querySelector('.display');
+const equalsButton = document.querySelector('.equals');
 const numButtons = document.querySelectorAll('.num');
-
-numButtons.forEach(button => button.addEventListener('click', changeDisplay));
+const operatorButtons = document.querySelectorAll('.operator');
 
 let displayValue = '0';
+let firstNumber = 0;
+let operator = '';
 
+numButtons.forEach(button => button.addEventListener('click', e => changeDisplay(e.target.innerHTML)));
+operatorButtons.forEach(button => button.addEventListener('click', operatorClickHandler));
 
-function changeDisplay(event) {
-    if(display.textContent === '0') display.textContent = event.target.innerHTML;
-    else display.textContent += event.target.innerHTML;
+function operatorClickHandler(event) {
+    operator = event.target.innerHTML;
+    firstNumber = parseInt(displayValue);
+    changeDisplay(null);
+}
+
+function changeDisplay(value) {
+    if(display.textContent === '0') display.textContent = value;
+    else if(value === null) display.textContent = '0';
+    else display.textContent += value;
 }
 
 function add(a, b) {
