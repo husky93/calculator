@@ -9,27 +9,39 @@ let operator = '';
 
 numButtons.forEach(button => button.addEventListener('click', e => changeDisplay(e.target.innerHTML)));
 operatorButtons.forEach(button => button.addEventListener('click', opClickHandler));
-equalsButton.addEventListener('click', equalsClickHandler);
+equalsButton.addEventListener('click', getResult);
 
 function opClickHandler(event) {
-    operator = event.target.innerHTML;
-    firstNumber = parseInt(displayValue);
-    changeDisplay(null);
+    if(operator !== '') {
+        getResult();
+        operator = event.target.innerHTML;
+    }
+    else {
+        operator = event.target.innerHTML;
+        firstNumber = parseFloat(displayValue);
+        changeDisplay(null);
+    }
 }
 
-function equalsClickHandler() {
-    const secondNumber = parseInt(displayValue);
+function getResult() {
+    const secondNumber = parseFloat(displayValue);
     const result = operate(operator, firstNumber, secondNumber);
+    firstNumber = result;
+    operator = '';
     changeDisplay(null);
     changeDisplay(result);
 }
 
 function changeDisplay(value) {
-    if(value === null) {
+    if(value === null || value === Infinity || value === NaN) {
         display.textContent = '0';
         displayValue = '0';
     }
     else if(display.textContent === '0') {
+        display.textContent = value;
+        displayValue = value;
+    }
+    else if(displayValue === firstNumber) {
         display.textContent = value;
         displayValue = value;
     }
