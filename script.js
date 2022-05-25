@@ -24,6 +24,9 @@ function opClickHandler(event) {
 }
 
 function getResult() {
+    if(operator === ''){
+        return;
+    }
     const secondNumber = parseFloat(displayValue);
     const op = operate(operator, firstNumber, secondNumber);
     const result = isFloat(op) ? op.toFixed(8) : op;
@@ -68,10 +71,6 @@ function divide(a, b) {
     return a / b;
 }
 
-function isFloat(num)  {
-    return Number(num) === num && num % 1 !== 0;
-}
-
 function operate(operator, a, b) {
     switch(operator) {
         case '+':
@@ -85,4 +84,8 @@ function operate(operator, a, b) {
         default:
             break;
     }
+}
+
+function isFloat(num)  {
+    return Number(num) === num && num % 1 !== 0;
 }
