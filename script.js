@@ -20,7 +20,7 @@ function opClickHandler(event) {
     }
     else {
         operator = event.target.innerHTML;
-        firstNumber = parseFloat(displayValue);
+        firstNumber = displayValue === 'error' ? 0 : parseFloat(displayValue);
         changeDisplay(null);
     }
 }
@@ -31,6 +31,12 @@ function getResult() {
     }
     const secondNumber = parseFloat(displayValue);
     const op = operate(operator, firstNumber, secondNumber);
+    if(op === 'error') {
+        changeDisplay(op);
+        operator = '';
+        firstNumber = 0;
+        return;
+    }
     const result = isFloat(op) ? op.toFixed(8) : op;
     firstNumber = result;
     operator = '';
@@ -43,7 +49,11 @@ function changeDisplay(value) {
         display.textContent = '0';
         displayValue = '0';
     }
-    else if(display.textContent === '0') {
+    else if(value === 'error') {
+        display.textContent = 'ERROR!!!';
+        displayValue = 'error';
+    }
+    else if(display.textContent === '0' || displayValue === 'error') {
         display.textContent = value;
         displayValue = value;
     }
@@ -88,7 +98,7 @@ function operate(operator, a, b) {
         case '*':
             return multiply(a, b);
         case '/':
-            return divide(a, b);
+            return b === 0 ? 'error' : divide(a, b);
         default:
             break;
     }
