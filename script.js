@@ -9,6 +9,12 @@ let displayValue = '0';
 let firstNumber = 0;
 let operator = '';
 
+window.addEventListener('keydown', e => {
+    console.log(e.key);
+    const button = document.querySelector(`.btn[data-key="${e.key}"`);
+    button.click();
+});
+
 numButtons.forEach(button => button.addEventListener('click', e => changeDisplay(e.target.innerHTML)));
 operatorButtons.forEach(button => button.addEventListener('click', opClickHandler));
 equalsButton.addEventListener('click', getResult);
