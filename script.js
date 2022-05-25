@@ -1,5 +1,6 @@
 const display = document.querySelector('.display');
 const equalsButton = document.querySelector('.equals');
+const clearButton = document.querySelector('.clear');
 const numButtons = document.querySelectorAll('.num');
 const operatorButtons = document.querySelectorAll('.operator');
 
@@ -10,6 +11,7 @@ let operator = '';
 numButtons.forEach(button => button.addEventListener('click', e => changeDisplay(e.target.innerHTML)));
 operatorButtons.forEach(button => button.addEventListener('click', opClickHandler));
 equalsButton.addEventListener('click', getResult);
+clearButton.addEventListener('click', clearAll);
 
 function opClickHandler(event) {
     if(operator !== '') {
@@ -53,6 +55,12 @@ function changeDisplay(value) {
         display.textContent += value;
         displayValue += value;
     }
+}
+
+function clearAll() {
+    firstNumber = 0;
+    operator = '';
+    changeDisplay(null);
 }
 
 function add(a, b) {
