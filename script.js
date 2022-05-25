@@ -16,7 +16,7 @@ clearButton.addEventListener('click', clearAll);
 pointButton.addEventListener('click', addPoint);
 
 function opClickHandler(event) {
-    if(operator !== '') {
+    if(operator !== '' && displayValue !== 'error') {
         getResult();
         operator = event.target.innerHTML;
     }
