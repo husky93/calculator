@@ -47,8 +47,8 @@ body {
 
 .btn {
     border: none;
-    border-right: 3px #504F54 solid;
-    border-bottom: 3px #504F54 solid;
+    border-right: 3px #808080 solid;
+    border-bottom: 3px #808080 solid;
     border-radius: 6px;
     min-width: 48px;
     padding: 4px;
