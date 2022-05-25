@@ -1,9 +1,9 @@
 const display = document.querySelector('.display');
-const equalsButton = document.querySelector('.equals');
-const clearButton = document.querySelector('.clear');
-const pointButton = document.querySelector('.dot');
-const numButtons = document.querySelectorAll('.num');
-const operatorButtons = document.querySelectorAll('.operator');
+const equalsButton = document.querySelector('.btn-equals');
+const clearButton = document.querySelector('.btn-clear');
+const pointButton = document.querySelector('.btn-dot');
+const numButtons = document.querySelectorAll('.btn-num');
+const operatorButtons = document.querySelectorAll('.btn-operator');
 
 let displayValue = '0';
 let firstNumber = 0;
