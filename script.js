@@ -25,7 +25,8 @@ function opClickHandler(event) {
 
 function getResult() {
     const secondNumber = parseFloat(displayValue);
-    const result = operate(operator, firstNumber, secondNumber);
+    const op = operate(operator, firstNumber, secondNumber);
+    const result = isFloat(op) ? op.toFixed(8) : op;
     firstNumber = result;
     operator = '';
     changeDisplay(null);
@@ -65,6 +66,10 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+}
+
+function isFloat(num)  {
+    return Number(num) === num && num % 1 !== 0;
 }
 
 function operate(operator, a, b) {
