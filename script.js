@@ -55,7 +55,7 @@ function changeDisplay(value) {
         display.textContent = 'ERROR!!!';
         displayValue = 'error';
     }
-    else if(display.textContent === '0' || displayValue === 'error') {
+    else if((display.textContent === '0' && value !== '.') || displayValue === 'error') {
         display.textContent = value;
         displayValue = value;
     }
