@@ -10,6 +10,7 @@ let firstNumber = 0;
 let operator = '';
 
 window.addEventListener('keydown', e => {
+    console.log(e.key);
     const button = document.querySelector(`.btn[data-key="${e.key}"`);
     if(button) {
         button.click();
