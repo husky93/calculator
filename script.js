@@ -1,6 +1,7 @@
 const display = document.querySelector('.display');
 const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
+const pointButton = document.querySelector('.dot');
 const numButtons = document.querySelectorAll('.num');
 const operatorButtons = document.querySelectorAll('.operator');
 
@@ -12,6 +13,7 @@ numButtons.forEach(button => button.addEventListener('click', e => changeDisplay
 operatorButtons.forEach(button => button.addEventListener('click', opClickHandler));
 equalsButton.addEventListener('click', getResult);
 clearButton.addEventListener('click', clearAll);
+pointButton.addEventListener('click', addPoint);
 
 function opClickHandler(event) {
     if(operator !== '') {
@@ -37,7 +39,7 @@ function getResult() {
         firstNumber = 0;
         return;
     }
-    const result = isFloat(op) ? op.toFixed(8) : op;
+    const result = isFloat(op) ? +op.toFixed(8) : op;
     firstNumber = result;
     operator = '';
     changeDisplay(null);
@@ -71,6 +73,12 @@ function clearAll() {
     firstNumber = 0;
     operator = '';
     changeDisplay(null);
+}
+
+function addPoint() {
+    if(displayValue.includes('.')) {
+        return;
+    } else changeDisplay('.');
 }
 
 function add(a, b) {
