@@ -39,7 +39,7 @@ function getResult() {
         firstNumber = 0;
         return;
     }
-    const result = isFloat(op) ? +op.toFixed(8) : op;
+    const result = isFloat(op) ? +op.toFixed(4) : op;
     firstNumber = result;
     operator = '';
     changeDisplay(null);
@@ -64,6 +64,9 @@ function changeDisplay(value) {
         displayValue = value;
     }
     else {
+        if(displayValue.length >= 12) {
+            return;
+        }
         display.textContent += value;
         displayValue += value;
     }
