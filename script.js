@@ -51,11 +51,11 @@ function getResult() {
     firstNumber = result;
     operator = '';
     changeDisplay(null);
-    changeDisplay(result);
+    changeDisplay(result.toString());
 }
 
 function changeDisplay(value) {
-    if(value === null || value === Infinity || value === NaN) {
+    if(value === null || value === NaN) {
         display.textContent = '0';
         displayValue = '0';
     }
@@ -67,7 +67,7 @@ function changeDisplay(value) {
         display.textContent = value;
         displayValue = value;
     }
-    else if(displayValue === firstNumber) {
+    else if(displayValue === firstNumber.toString() && displayValue !== '0') {
         display.textContent = value;
         displayValue = value;
     }

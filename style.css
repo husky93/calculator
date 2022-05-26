@@ -70,8 +70,7 @@ body {
     color:#464044;
 }
 
-.btn:active,
-.btn:focus {
+.btn:active {
     border-right: 1px #494e59 solid;
     border-bottom: 1px #494e59 solid;
 }
