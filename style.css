@@ -48,7 +48,7 @@ body {
 .btn {
     border: none;
     border-right: 3px #808080 solid;
-    border-bottom: 3px #808080 solid;
+    border-bottom: 3px #656565 solid;
     border-radius: 6px;
     min-width: 48px;
     padding: 4px;
@@ -71,8 +71,8 @@ body {
 }
 
 .btn:active {
-    border-right: 1px #494e59 solid;
-    border-bottom: 1px #494e59 solid;
+    border-right: 1px #808080 solid;
+    border-bottom: 1px #656565 solid;
 }
 
 .row {
